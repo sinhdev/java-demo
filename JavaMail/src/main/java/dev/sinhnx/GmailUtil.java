@@ -23,11 +23,11 @@ public class GmailUtil {
         System.out.print("Password: ");
         final String password = App.getPassword(kb);
         GmailUtil gmail = new GmailUtil();
-        gmail.readPOP3(userName, password);
+        gmail.readIMAP(userName, password);
     }
 
-    public boolean sendGmail(final String senderEmail, final String pass, final String toEmail,
-            final String ccEmail, final String subject, final String content) {
+    public boolean sendGmail(final String senderEmail, final String pass, final String toEmail, final String ccEmail,
+            final String subject, final String content) {
         try {
             final Properties props = System.getProperties();
             props.put("mail.smtp.starttls.enable", "true");
@@ -99,7 +99,7 @@ public class GmailUtil {
         }
     }
 
-    public void readSMTP(final String user, final String password) {
+    public void readIMAP(final String user, final String password) {
         Properties props = new Properties();
         try {
             props.put("mail.smtp.host", "smtp.gmail.com");
