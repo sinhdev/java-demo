@@ -1,2 +1,2 @@
 # java-demo
-Java Programming Langu
+Java Programming Language Demo
