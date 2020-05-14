@@ -10,6 +10,7 @@ public class CaesarCode {
         System.out.println("Decrypted Message: " + decryptedMessage);
 
         for (int i = 1; i < 26; i++) {
+            // System.out.println("Key=" + i + " -> " + CaesarCode.decrypt("YJCVKUVJGPCOGQHVJGUAUVGOWUGFDAJCOQRGTCVQTUVQOCMGHTGGRJQPGECNNU", i));
             System.out.println("Key=" + i + " -> " + CaesarCode.decrypt(encryptedMessage, i));
         }
     }
