@@ -14,61 +14,62 @@ public class DbUtil {
     private static String user = "sinhnx";
     private static String password = "sinhnx.dev";
 
+    private DbUtil() {
+        throw new IllegalStateException("Can't init DbUtil instance!");
+    }
+
     public static Connection getConnection() throws SQLException {
         connection = DriverManager.getConnection(url, user, password);
         return connection;
     }
 
-    public static Connection getConnection(String dbConfigFile) throws SQLException {
+    public static Connection getConnection(final String dbConfigFile) throws SQLException {
         try (FileInputStream f = new FileInputStream(dbConfigFile)) {
             // load the properties file
-            Properties pros = new Properties();
+            final Properties pros = new Properties();
             pros.load(f);
             // assign db parameters
             url = pros.getProperty("url");
             user = pros.getProperty("user");
             password = pros.getProperty("password");
             // create a connection to the database
-            return getConnection();
-        } catch (IOException e) {
-            return null;
+            connection = DriverManager.getConnection(url, user, password);
+            return connection;
+        } catch (final IOException e) {
+            throw new SQLException();
         }
     }
 
-    public static Connection getConnection(String url, String user, String password) throws SQLException {
+    public static Connection getConnection(final String url, final String user, final String password)
+            throws SQLException {
         DbUtil.url = url;
         DbUtil.user = user;
         DbUtil.password = password;
         return getConnection();
     }
 
-    public static boolean executeStatement(String sql) {
+    public static boolean executeStatement(final String sql) {
         boolean exeResult = false;
-        try (Connection con = DbUtil.getConnection();) {
-            Statement stm = con.createStatement();
+        try (Statement stm = DbUtil.getConnection().createStatement();) {
             exeResult = stm.execute(sql);
-            stm.close();
-        } catch (SQLException e) {
+        } catch (final SQLException e) {
             exeResult = false;
         }
         return exeResult;
     }
 
-    public static int executeBatch(String[] sqls) {
+    public static int executeBatch(final String[] sqls) {
         int resultNo = 0;
-        try (Connection con = DbUtil.getConnection();) {
-            if (con == null) {
-                return resultNo;
-            }
-            Statement stm = con.createStatement();
-            for (String sql : sqls) {
+        try (Statement stm = DbUtil.getConnection().createStatement();) {
+            for (final String sql : sqls) {
                 stm.addBatch(sql);
             }
-            int[] executeResult = stm.executeBatch();
-            for (int i : executeResult) {
+            final int[] executeResult = stm.executeBatch();
+            for (final int i : executeResult) {
                 resultNo += i;
             }
-        } catch (Exception e) {
+        } catch (final Exception e) {
+            resultNo = 0;
         }
         return resultNo;
     }

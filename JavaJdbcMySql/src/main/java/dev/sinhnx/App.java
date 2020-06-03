@@ -24,6 +24,12 @@ public class App {
             System.out.println("Connection Error!");
         }
 
+        // insert Customer
+        Customer customer = new Customer();
+        customer.setCustomerName("sinhnx");
+        customer.setCustomerAddress("Hà Nội");
+        System.out.println("Insert Customer: " + new CustomerBL().addCustomer(customer));
+
         showAllCustomers();
         // insertItem();
         showAllItems();
@@ -82,7 +88,7 @@ public class App {
     }
 
     private static void showAllCustomers() {
-        System.out.println("\nItems List:");
+        System.out.println("\nCustomers List:");
         List<Customer> lst = new CustomerBL().getAllCustomers();
         for (Customer customer : lst) {
             System.out.println(customer);

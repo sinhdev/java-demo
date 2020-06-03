@@ -5,11 +5,7 @@ import java.util.List;
 import java.util.ArrayList;
 
 public class Order {
-
-    public static class OrderStatus {
-        public static final int CREATE_NEW_ORDER = 1;
-    }
-
+    public static final int CREATE_NEW_ORDER_STATUS = 1;
     private int orderId;
     private Date orderDate;
     private int orderStatus;
@@ -18,9 +14,9 @@ public class Order {
 
     public Order() {
         orderId = 0;
-        orderStatus = OrderStatus.CREATE_NEW_ORDER;
+        orderStatus = CREATE_NEW_ORDER_STATUS;
         customer = null;
-        items = null;
+        items = new ArrayList<>();
     }
 
     public void setOrderId(int orderId) {
@@ -61,7 +57,7 @@ public class Order {
 
     public void addItem(Item item) {
         if (items == null) {
-            items = new ArrayList<Item>();
+            items = new ArrayList<>();
         }
         items.add(item);
     }
