@@ -18,7 +18,7 @@ import dev.sinhnx.persitance.Order;
  */
 public class App {
     public static void main(String[] args) {
-        try (Connection con = dev.sinhnx.dal.DbUtil.getConnection("orderDb.properties");) {
+        try (Connection con = dev.sinhnx.dal.DbUtil.getConnection("./orderDb.properties");) {
             System.out.println("Connected to MySql Server.");
         } catch (SQLException ex) {
             System.out.println("Connection Error!");
@@ -40,7 +40,12 @@ public class App {
     private static void insertOrder() {
         ItemBL ibl = new ItemBL();
         OrderBL obl = new OrderBL();
+
+        Customer customer = new Customer();
+        customer.setCustomerName("customerName");
+        customer.setCustomerAddress("customerAddress");
         Order order = new Order();
+        order.setCustomer(customer);
         Item item = ibl.getById(1);
         item.setAmount(1);
         order.addItem(item);

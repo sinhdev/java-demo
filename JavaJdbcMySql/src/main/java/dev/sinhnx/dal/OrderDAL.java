@@ -23,7 +23,7 @@ public class OrderDAL {
             customer.setCustomerId(1);
         }
         int result = 0;
-        final int customerId = order.getCustomer().getCustomerId();
+        int customerId = order.getCustomer().getCustomerId();
         try (Connection con = DbUtil.getConnection(); Statement stm = con.createStatement();) {
             con.setAutoCommit(false);
             // lock table to insert data
