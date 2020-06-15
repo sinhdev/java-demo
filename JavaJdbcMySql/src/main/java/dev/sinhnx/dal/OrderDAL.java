@@ -22,7 +22,6 @@ public class OrderDAL {
             customer = new Customer();
             customer.setCustomerId(1);
         }
-        int result = 0;
         int customerId = order.getCustomer().getCustomerId();
         try (Connection con = DbUtil.getConnection(); Statement stm = con.createStatement();) {
             con.setAutoCommit(false);
@@ -38,9 +37,7 @@ public class OrderDAL {
                         throw new SQLException();
                     }
                 } catch (SQLException ex) {
-                    // rollback transaction
-                    con.rollback();
-                    return 0;
+                    return rollbackTransaction(con);
                 }
                 // get new customerId
                 try (ResultSet rs = stm
@@ -51,9 +48,7 @@ public class OrderDAL {
                         throw new SQLException();
                     }
                 } catch (SQLException e) {
-                    // rollback transaction
-                    con.rollback();
-                    return 0;
+                    return rollbackTransaction(con);
                 }
             } else if (customerId > 1) {
                 // get customer by id
@@ -65,9 +60,7 @@ public class OrderDAL {
                         throw new SQLException();
                     }
                 } catch (SQLException ex) {
-                    // rollback transaction
-                    con.rollback();
-                    return 0;
+                    return rollbackTransaction(con);
                 }
             }
 
@@ -80,9 +73,7 @@ public class OrderDAL {
                     throw new SQLException();
                 }
             } catch (SQLException ex) {
-                // rollback transaction
-                con.rollback();
-                return 0;
+                return rollbackTransaction(con);
             }
             // get new order_id
             try (ResultSet rs = stm.executeQuery("select LAST_INSERT_ID() as order_id;");) {
@@ -92,9 +83,7 @@ public class OrderDAL {
                     throw new SQLException();
                 }
             } catch (SQLException ex) {
-                // rollback transaction
-                con.rollback();
-                return 0;
+                return rollbackTransaction(con);
             }
 
             // insert OrderDetails
@@ -113,9 +102,7 @@ public class OrderDAL {
                         throw new SQLException();
                     }
                 } catch (SQLException ex) {
-                    // rollback transaction
-                    con.rollback();
-                    return 0;
+                    return rollbackTransaction(con);
                 }
                 // update amount of Item
                 try (PreparedStatement pstm = con
@@ -126,9 +113,7 @@ public class OrderDAL {
                         throw new SQLException();
                     }
                 } catch (SQLException ex) {
-                    // rollback transaction
-                    con.rollback();
-                    return 0;
+                    return rollbackTransaction(con);
                 }
             }
             // commit transaction
@@ -138,8 +123,17 @@ public class OrderDAL {
             // set auto commit is true
             con.setAutoCommit(true);
         } catch (SQLException ex) {
-            result = 0;
+            return 0;
         }
-        return result;
+        return 1;
+    }
+
+    private int rollbackTransaction(Connection con) throws SQLException {
+        // rollback transaction
+        con.rollback();
+        // unlock tables
+        Statement stm = con.createStatement();
+        stm.execute("unlock tables;");
+        return 0;
     }
 }
