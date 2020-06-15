@@ -134,6 +134,8 @@ public class OrderDAL {
         // unlock tables
         Statement stm = con.createStatement();
         stm.execute("unlock tables;");
+        // set auto commit is true
+        con.setAutoCommit(true);
         return 0;
     }
 }
