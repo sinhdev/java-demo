@@ -8,8 +8,6 @@ import java.util.Scanner;
 import dev.sinhnx.bl.CustomerBL;
 import dev.sinhnx.bl.ItemBL;
 import dev.sinhnx.bl.OrderBL;
-import dev.sinhnx.dal.DAL;
-import dev.sinhnx.dal.DalFactory;
 import dev.sinhnx.persitance.Customer;
 import dev.sinhnx.persitance.Item;
 import dev.sinhnx.persitance.Order;
@@ -30,10 +28,7 @@ public class App {
         Customer customer = new Customer();
         customer.setCustomerName("sinhnx");
         customer.setCustomerAddress("Hà Nội");
-        DAL<Customer> dal = DalFactory.getDAL(Customer.class);
-        System.out.println("Insert Customer: " + dal.insert(customer));
-        // System.out.println("Insert Customer: " + new
-        // CustomerBL().addCustomer(customer));
+        System.out.println("Insert Customer: " + new CustomerBL().addCustomer(customer));
 
         showAllCustomers();
         // insertItem();

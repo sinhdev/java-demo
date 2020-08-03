@@ -10,7 +10,7 @@ import java.util.List;
 
 import dev.sinhnx.persitance.Customer;
 
-public class CustomerDAL implements DAL<Customer> {
+public class CustomerDAL {
     public List<Customer> getAll() {
         String sql = "select * from customers";
         List<Customer> lst = new ArrayList<>();
@@ -46,10 +46,5 @@ public class CustomerDAL implements DAL<Customer> {
             result = -1;
         }
         return result;
-    }
-
-    @Override
-    public int insert(Customer c) {
-        return insertCustomer(c);
     }
 }

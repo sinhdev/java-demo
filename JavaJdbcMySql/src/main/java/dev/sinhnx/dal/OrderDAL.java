@@ -10,8 +10,7 @@ import dev.sinhnx.persitance.Customer;
 import dev.sinhnx.persitance.Item;
 import dev.sinhnx.persitance.Order;
 
-public class OrderDAL implements DAL<Order> {
-    @Override
+public class OrderDAL {
     public int insert(Order order) {
         // if there are no items, do not add an order
         if (order.getItems() == null || order.getItems().isEmpty()) {
