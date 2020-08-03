@@ -10,7 +10,7 @@ import java.util.List;
 
 import dev.sinhnx.persitance.Item;
 
-public class ItemDAL {
+public class ItemDAL implements DAL<Item> {
     public Item getById(int itemId) {
         Item item = null;
         try (Connection con = DbUtil.getConnection();
@@ -65,5 +65,10 @@ public class ItemDAL {
         item.setItemStatus(rs.getShort("item_status"));
         item.setDescription(rs.getString("item_description"));
         return item;
+    }
+
+    @Override
+    public int insert(Item e) {
+        return insertItem(e);
     }
 }

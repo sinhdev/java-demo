@@ -1,14 +1,15 @@
-package dev.sinhnx.dal;
+package dev.sinhnx.threelayer.dal;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.List;
 
-import dev.sinhnx.persitance.Customer;
-import dev.sinhnx.persitance.Item;
-import dev.sinhnx.persitance.Order;
+import dev.sinhnx.threelayer.persitance.Customer;
+import dev.sinhnx.threelayer.persitance.Item;
+import dev.sinhnx.threelayer.persitance.Order;
 
 public class OrderDAL implements DAL<Order> {
     @Override
@@ -138,5 +139,17 @@ public class OrderDAL implements DAL<Order> {
         // set auto commit is true
         con.setAutoCommit(true);
         return 0;
+    }
+
+    @Override
+    public List<Order> search(Order e) {
+        // TODO Auto-generated method stub
+        return null;
+    }
+
+    @Override
+    public Order getById(Order e) {
+        // TODO Auto-generated method stub
+        return null;
     }
 }

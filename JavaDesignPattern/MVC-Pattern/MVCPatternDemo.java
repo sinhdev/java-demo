@@ -12,7 +12,7 @@ public class MVCPatternDemo {
         controller.updateView();
 
         // update model data
-        controller.setStudentName("John");
+        model.setName("PF08");
 
         controller.updateView();
     }

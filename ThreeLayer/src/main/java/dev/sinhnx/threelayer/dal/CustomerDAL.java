@@ -1,4 +1,4 @@
-package dev.sinhnx.dal;
+package dev.sinhnx.threelayer.dal;
 
 import java.sql.CallableStatement;
 import java.sql.Connection;
@@ -8,22 +8,9 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-import dev.sinhnx.persitance.Customer;
+import dev.sinhnx.threelayer.persitance.Customer;
 
 public class CustomerDAL implements DAL<Customer> {
-    public List<Customer> getAll() {
-        String sql = "select * from customers";
-        List<Customer> lst = new ArrayList<>();
-        try (Connection con = DbUtil.getConnection();
-                Statement stm = con.createStatement();
-                ResultSet rs = stm.executeQuery(sql)) {
-            while (rs.next()) {
-                lst.add(getCustomer(rs));
-            }
-        } catch (SQLException ex) {
-        }
-        return lst;
-    }
 
     private Customer getCustomer(final ResultSet rs) throws SQLException {
         Customer customer = new Customer();
@@ -33,7 +20,8 @@ public class CustomerDAL implements DAL<Customer> {
         return customer;
     }
 
-    public int insertCustomer(Customer customer) {
+    @Override
+    public int insert(Customer customer) {
         int result = 0;
         String callStoreProcedure = "{call sp_createCustomer(?,?,?)}";
         try (CallableStatement cstm = DbUtil.getConnection().prepareCall(callStoreProcedure);) {
@@ -49,7 +37,23 @@ public class CustomerDAL implements DAL<Customer> {
     }
 
     @Override
-    public int insert(Customer c) {
-        return insertCustomer(c);
+    public List<Customer> search(Customer e) {
+        String sql = "select * from customers";
+        List<Customer> lst = new ArrayList<>();
+        try (Connection con = DbUtil.getConnection();
+                Statement stm = con.createStatement();
+                ResultSet rs = stm.executeQuery(sql)) {
+            while (rs.next()) {
+                lst.add(getCustomer(rs));
+            }
+        } catch (SQLException ex) {
+        }
+        return lst;
+    }
+
+    @Override
+    public Customer getById(Customer e) {
+        // TODO Auto-generated method stub
+        return null;
     }
 }

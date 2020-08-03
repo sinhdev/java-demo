@@ -3,6 +3,8 @@ package dev.sinhnx.bl;
 import java.util.List;
 
 import dev.sinhnx.dal.CustomerDAL;
+import dev.sinhnx.dal.DAL;
+import dev.sinhnx.dal.DalFactory;
 import dev.sinhnx.persitance.Customer;
 
 public class CustomerBL {
@@ -13,7 +15,8 @@ public class CustomerBL {
     }
 
     public boolean addCustomer(Customer customer) {
-        return dal.insertCustomer(customer) > 0;
+        DAL<Customer> dal = DalFactory.getDAL(Customer.class);
+        return dal.insert(customer) > 0;
     }
 
     public int addCustomerAndGetCustomerId(Customer customer) {
