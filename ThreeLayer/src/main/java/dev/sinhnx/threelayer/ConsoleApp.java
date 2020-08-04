@@ -9,9 +9,9 @@ import dev.sinhnx.threelayer.persitance.Item;
  * Hello world!
  *
  */
-public class App {
+public class ConsoleApp {
     public static void main(String[] args) {
-        List<Item> lstItems = new ItemBL().getAll();
+        List<Item> lstItems = new ItemBL().searchByName("Item");
         for (Item item : lstItems) {
             System.out.println(item);
         }

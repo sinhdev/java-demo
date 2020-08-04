@@ -10,6 +10,21 @@ public class ItemBL {
     private DAL<Item> dal = DalFactory.getDAL(Item.class);
 
     public List<Item> getAll() {
-        return dal.search(null);
+        Item item = null;
+        return dal.search(item);
+    }
+
+    public boolean insertItem(Item item) {
+        return dal.insert(item) > 0;
+    }
+
+    public Item getById(int itemId) {
+        Item item = new Item();
+        item.setItemId(itemId);
+        return dal.getById(item);
+    }
+
+    public List<Item> searchByName(String itemName) {
+        return dal.search("item_name like '%" + itemName + "%'");
     }
 }

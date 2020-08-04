@@ -8,7 +8,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.Properties;
 
-public class DbUtil {
+class DbUtil {
     private static Connection connection;
     private static String url = "jdbc:mysql://localhost:3306/OrderDB";
     private static String user = "sinhnx";

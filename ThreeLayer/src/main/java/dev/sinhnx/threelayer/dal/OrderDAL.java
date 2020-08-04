@@ -11,7 +11,7 @@ import dev.sinhnx.threelayer.persitance.Customer;
 import dev.sinhnx.threelayer.persitance.Item;
 import dev.sinhnx.threelayer.persitance.Order;
 
-public class OrderDAL implements DAL<Order> {
+class OrderDAL implements DAL<Order> {
     @Override
     public int insert(Order order) {
         // if there are no items, do not add an order
@@ -149,6 +149,12 @@ public class OrderDAL implements DAL<Order> {
 
     @Override
     public Order getById(Order e) {
+        // TODO Auto-generated method stub
+        return null;
+    }
+
+    @Override
+    public List<Order> search(String whereClause) {
         // TODO Auto-generated method stub
         return null;
     }

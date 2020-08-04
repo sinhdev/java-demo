@@ -10,37 +10,7 @@ import java.util.List;
 
 import dev.sinhnx.threelayer.persitance.Item;
 
-public class ItemDAL implements DAL<Item> {
-    public Item getById(int itemId) {
-        Item item = null;
-        try (Connection con = DbUtil.getConnection();
-                PreparedStatement pstm = con.prepareStatement("select * from Items where item_id=?;");) {
-            pstm.setInt(1, itemId);
-            try (ResultSet rs = pstm.executeQuery();) {
-                if (rs.next()) {
-                    item = getItem(rs);
-                }
-            } catch (Exception e) {
-            }
-        } catch (SQLException ex) {
-        }
-        return item;
-    }
-
-    public List<Item> getAll() {
-        String sql = "select * from items";
-        List<Item> lst = new ArrayList<>();
-        try (Connection con = DbUtil.getConnection();
-                Statement stm = con.createStatement();
-                ResultSet rs = stm.executeQuery(sql);) {
-            while (rs.next()) {
-                lst.add(getItem(rs));
-            }
-        } catch (SQLException ex) {
-            lst = null;
-        }
-        return lst;
-    }
+class ItemDAL implements DAL<Item> {
 
     private Item getItem(ResultSet rs) throws SQLException {
         Item item = new Item();
@@ -76,18 +46,7 @@ public class ItemDAL implements DAL<Item> {
         } else if (item.getItemName() != null && !item.getItemName().equals("")) {
             sql = "select * from items where item_name='" + item.getItemName() + "'";
         }
-        List<Item> lst = new ArrayList<>();
-        try (Connection con = DbUtil.getConnection();
-                Statement stm = con.createStatement();
-                ResultSet rs = stm.executeQuery(sql);) {
-            while (rs.next()) {
-                lst.add(getItem(rs));
-            }
-        } catch (SQLException ex) {
-            ex.printStackTrace();
-            lst = null;
-        }
-        return lst;
+        return getItemsList(sql);
     }
 
     @Override
@@ -107,5 +66,26 @@ public class ItemDAL implements DAL<Item> {
         } catch (SQLException ex) {
         }
         return result;
+    }
+
+    @Override
+    public List<Item> search(String whereClause) {
+        String sql = "select * from items where " + whereClause;
+        return getItemsList(sql);
+    }
+
+    private List<Item> getItemsList(String sql) {
+        List<Item> lst = new ArrayList<>();
+        try (Connection con = DbUtil.getConnection();
+                Statement stm = con.createStatement();
+                ResultSet rs = stm.executeQuery(sql);) {
+            while (rs.next()) {
+                lst.add(getItem(rs));
+            }
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+            lst = null;
+        }
+        return lst;
     }
 }

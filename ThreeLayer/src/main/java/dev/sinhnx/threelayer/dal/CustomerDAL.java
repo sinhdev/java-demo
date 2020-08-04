@@ -10,7 +10,7 @@ import java.util.List;
 
 import dev.sinhnx.threelayer.persitance.Customer;
 
-public class CustomerDAL implements DAL<Customer> {
+class CustomerDAL implements DAL<Customer> {
 
     private Customer getCustomer(final ResultSet rs) throws SQLException {
         Customer customer = new Customer();
@@ -53,6 +53,12 @@ public class CustomerDAL implements DAL<Customer> {
 
     @Override
     public Customer getById(Customer e) {
+        // TODO Auto-generated method stub
+        return null;
+    }
+
+    @Override
+    public List<Customer> search(String whereClause) {
         // TODO Auto-generated method stub
         return null;
     }
