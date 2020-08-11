@@ -4,7 +4,7 @@ import java.util.List;
 
 import dev.sinhnx.threelayer.dal.DAL;
 import dev.sinhnx.threelayer.dal.DalFactory;
-import dev.sinhnx.threelayer.persitance.Item;
+import dev.sinhnx.threelayer.persistance.Item;
 
 public class ItemBL {
     private DAL<Item> dal = DalFactory.getDAL(Item.class);

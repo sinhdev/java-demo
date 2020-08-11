@@ -3,7 +3,7 @@ package dev.sinhnx.threelayer;
 import java.util.List;
 
 import dev.sinhnx.threelayer.bl.ItemBL;
-import dev.sinhnx.threelayer.persitance.Item;
+import dev.sinhnx.threelayer.persistance.Item;
 
 /**
  * Hello world!

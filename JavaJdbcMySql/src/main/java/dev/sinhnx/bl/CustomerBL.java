@@ -3,7 +3,7 @@ package dev.sinhnx.bl;
 import java.util.List;
 
 import dev.sinhnx.dal.CustomerDAL;
-import dev.sinhnx.persitance.Customer;
+import dev.sinhnx.persistance.Customer;
 
 public class CustomerBL {
     private CustomerDAL dal = new CustomerDAL();

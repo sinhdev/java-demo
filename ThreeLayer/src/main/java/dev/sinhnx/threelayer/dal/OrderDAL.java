@@ -7,9 +7,9 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.List;
 
-import dev.sinhnx.threelayer.persitance.Customer;
-import dev.sinhnx.threelayer.persitance.Item;
-import dev.sinhnx.threelayer.persitance.Order;
+import dev.sinhnx.threelayer.persistance.Customer;
+import dev.sinhnx.threelayer.persistance.Item;
+import dev.sinhnx.threelayer.persistance.Order;
 
 class OrderDAL implements DAL<Order> {
     @Override

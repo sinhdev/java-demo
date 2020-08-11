@@ -1,7 +1,7 @@
 package dev.sinhnx.bl;
 
 import dev.sinhnx.dal.OrderDAL;
-import dev.sinhnx.persitance.Order;
+import dev.sinhnx.persistance.Order;
 
 public class OrderBL {
     private OrderDAL orderDAL = new OrderDAL();

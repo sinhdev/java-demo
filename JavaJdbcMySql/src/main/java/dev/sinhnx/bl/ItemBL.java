@@ -3,7 +3,7 @@ package dev.sinhnx.bl;
 import java.util.List;
 
 import dev.sinhnx.dal.ItemDAL;
-import dev.sinhnx.persitance.Item;
+import dev.sinhnx.persistance.Item;
 
 public class ItemBL {
     private ItemDAL itemDAL = new ItemDAL();

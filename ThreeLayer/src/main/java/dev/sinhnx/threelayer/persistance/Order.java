@@ -1,4 +1,4 @@
-package dev.sinhnx.persitance;
+package dev.sinhnx.threelayer.persistance;
 
 import java.util.Date;
 import java.util.List;

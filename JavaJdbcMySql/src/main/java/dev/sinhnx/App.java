@@ -8,9 +8,9 @@ import java.util.Scanner;
 import dev.sinhnx.bl.CustomerBL;
 import dev.sinhnx.bl.ItemBL;
 import dev.sinhnx.bl.OrderBL;
-import dev.sinhnx.persitance.Customer;
-import dev.sinhnx.persitance.Item;
-import dev.sinhnx.persitance.Order;
+import dev.sinhnx.persistance.Customer;
+import dev.sinhnx.persistance.Item;
+import dev.sinhnx.persistance.Order;
 
 /**
  * Test connection to MySql

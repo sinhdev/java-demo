@@ -1,9 +1,6 @@
-package dev.sinhnx.threelayer.persitance;
+package dev.sinhnx.persistance;
 
 public class Item {
-    public static int INACTIVE = 0;
-    public static int ACTIVE = 1;
-
     private int itemId;
     private String itemName;
     private double unitPrice;

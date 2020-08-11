@@ -8,7 +8,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-import dev.sinhnx.persitance.Item;
+import dev.sinhnx.persistance.Item;
 
 public class ItemDAL{
     public Item getById(int itemId) {

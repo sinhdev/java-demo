@@ -8,7 +8,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-import dev.sinhnx.persitance.Customer;
+import dev.sinhnx.persistance.Customer;
 
 public class CustomerDAL {
     public List<Customer> getAll() {

@@ -1,4 +1,4 @@
-package dev.sinhnx.threelayer.persitance;
+package dev.sinhnx.threelayer.persistance;
 
 public class Customer {
     private int customerId;

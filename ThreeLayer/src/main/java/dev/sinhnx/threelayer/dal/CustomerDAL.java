@@ -8,7 +8,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-import dev.sinhnx.threelayer.persitance.Customer;
+import dev.sinhnx.threelayer.persistance.Customer;
 
 class CustomerDAL implements DAL<Customer> {
 

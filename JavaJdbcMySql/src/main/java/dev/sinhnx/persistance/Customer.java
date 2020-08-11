@@ -1,4 +1,4 @@
-package dev.sinhnx.persitance;
+package dev.sinhnx.persistance;
 
 public class Customer {
     private int customerId;

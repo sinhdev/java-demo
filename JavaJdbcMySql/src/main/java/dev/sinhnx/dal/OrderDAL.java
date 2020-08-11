@@ -6,9 +6,9 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-import dev.sinhnx.persitance.Customer;
-import dev.sinhnx.persitance.Item;
-import dev.sinhnx.persitance.Order;
+import dev.sinhnx.persistance.Customer;
+import dev.sinhnx.persistance.Item;
+import dev.sinhnx.persistance.Order;
 
 public class OrderDAL {
     public int insert(Order order) {

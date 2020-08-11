@@ -8,7 +8,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-import dev.sinhnx.threelayer.persitance.Item;
+import dev.sinhnx.threelayer.persistance.Item;
 
 class ItemDAL implements DAL<Item> {
 

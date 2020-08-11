@@ -1,6 +1,6 @@
 package dev.sinhnx.threelayer.dal;
 
-import dev.sinhnx.threelayer.persitance.*;
+import dev.sinhnx.threelayer.persistance.*;
 
 public class DalFactory {
     private enum ValidDal {
