@@ -1,13 +1,13 @@
 package dev.sinhnx.tdd;
 
-public class PTB2 {
+public class QuadraticEquation2 {
     private double a;
     private double b;
     private double c;
 
-    public PTB2(double a, double b, double c) throws Exception {
+    public QuadraticEquation2(double a, double b, double c) throws Exception {
         if (a == 0) {
-            throw new Exception("Khong phai la bac 2");
+            throw new Exception("Invalid Quadratic Equation 2");
         }
         this.a = a;
         this.b = b;
